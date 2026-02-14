@@ -8,7 +8,7 @@ WORKDIR /tmp_build
 
 COPY ./composer_install.sh /tmp_build
 
-ENV PHP_VERSION 8.4.17
+ENV PHP_VERSION 8.5.3
 
 RUN microdnf -y install tar make gcc g++  zlib-devel openssl-devel libffi-devel sqlite-devel libxml2-devel git
 RUN git clone https://github.com/Kitware/CMake.git && cd CMake && ./bootstrap && make -j$(getconf _NPROCESSORS_ONLN) && make install && cd ../ && curl -LO https://libzip.org/download/libzip-1.11.4.tar.gz && tar zxvf libzip-1.11.4.tar.gz && cd libzip-1.11.4 && mkdir build && cd build && cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local/libzip && make && make install 
